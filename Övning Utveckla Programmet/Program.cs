@@ -48,7 +48,25 @@
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
 
-                char guess = Console.ReadLine().ToLower()[0];
+                // Checks if user entered a guess corectly
+                string inputGuess;
+                while (true)
+                {
+                    Console.Write("Please enter a single letter: ");
+                    inputGuess = Console.ReadLine();
+
+                    // Check if the input is a single letter
+                    if (inputGuess.Length == 1 && char.IsLetter(inputGuess[0]))
+                    {
+                        break; // Input is valid; exit the loop
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
+                    }
+                }
+
+                char guess = inputGuess[0];
                 bool correctGuess = false;
 
                 for (int i = 0; i < wordToGuess.Length; i++)
