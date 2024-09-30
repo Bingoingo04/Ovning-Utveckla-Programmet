@@ -20,9 +20,9 @@ namespace Övning_Utveckla_Programmet
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
-
+                
                 if (choice == "1")
-                {
+                {   
                     int settings = Difficult();
                     PlayGame(settings);
                 }
@@ -39,6 +39,7 @@ namespace Övning_Utveckla_Programmet
 
         static void PlayGame(int settings)
         {
+            // Sets up the difficulty based on the return from Difficuly()
             int gameScore = 0;
             string wordToGuess = wordsHard[random.Next(wordsHard.Length)];
             char[] guessedWord = new char[wordToGuess.Length];
@@ -132,7 +133,7 @@ namespace Övning_Utveckla_Programmet
             Console.WriteLine($"Score: {gameScore} | HighScore: {highScore}");
 
         }
-
+        
         static int Difficult()
         {
             int userChoice = 0;
