@@ -72,6 +72,7 @@ namespace Övning_Utveckla_Programmet
             Console.WriteLine("Type exit to quit game");
             while (attemptsLeft > 0)
             {
+                Console.Clear();
                 Console.WriteLine($"Word: {new string(guessedWord)}");
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
