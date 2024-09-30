@@ -1,5 +1,5 @@
-- [ ] Utöka spelets ordförråd så att det finns fler möjliga ord att gissa på. - kim
-- [ ] Lägg till lätt, medel och svår svårighetsnivå med olika ordlängder och/eller försöksgränser. - kim
+- [X] Utöka spelets ordförråd så att det finns fler möjliga ord att gissa på. - kim
+- [X] Lägg till lätt, medel och svår svårighetsnivå med olika ordlängder och/eller försöksgränser. - kim
 - [x] Dela ut poäng baserat på korrekta gissningar och återstående försök - Hugo
 - [x] Håll koll på högsta poängen.- Hugo
 - [x] Se till att spelaren bara matar in en bokstav i taget. - Viggo
