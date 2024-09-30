@@ -9,6 +9,7 @@ namespace Övning_Utveckla_Programmet
         static string[] wordsHard = { "apple", "banana", "cherry", "date", "elderberry" };
         static Random random = new Random();
 
+        static int highScore = 0;
         static void Main(string[] args)
         {
             while (true)
@@ -22,8 +23,8 @@ namespace Övning_Utveckla_Programmet
 
                 if (choice == "1")
                 {
-                   int settings = Difficult();
-                   PlayGame(settings);
+                    int settings = Difficult();
+                    PlayGame(settings);
                 }
                 else if (choice == "2")
                 {
@@ -38,6 +39,7 @@ namespace Övning_Utveckla_Programmet
 
         static void PlayGame(int settings)
         {
+            int gameScore = 0;
             string wordToGuess = wordsHard[random.Next(wordsHard.Length)];
             char[] guessedWord = new char[wordToGuess.Length];
             int attemptsLeft = 0;
@@ -60,20 +62,38 @@ namespace Övning_Utveckla_Programmet
                 guessedWord = new char[wordToGuess.Length];
                 attemptsLeft = 3;
             }
-            
+
             for (int i = 0; i < guessedWord.Length; i++)
             {
                 guessedWord[i] = '_';
             }
 
+            Console.WriteLine("Type exit to quit game");
             while (attemptsLeft > 0)
             {
-                Console.WriteLine($"\nWord: {new string(guessedWord)}");
+                Console.WriteLine($"Word: {new string(guessedWord)}");
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
 
-                char guess = Console.ReadLine().ToLower()[0];
+                string userInput = Console.ReadLine().ToLower();
+                //first char in userInput is the guess.
+                char guess = ' ';
+                if (userInput.Length > 0)
+                {
+                    guess = userInput[0];
+                }
+                else
+                {
+                    //no input, go back to top of while loop
+                    continue;
+                }
                 bool correctGuess = false;
+
+                if (userInput == "exit")
+                {
+                    //break the while loop and go back to home screen
+                    break;
+                }
 
                 for (int i = 0; i < wordToGuess.Length; i++)
                 {
@@ -89,19 +109,31 @@ namespace Övning_Utveckla_Programmet
                     attemptsLeft--;
                     Console.WriteLine("Incorrect guess!");
                 }
+                else
+                {
+                    gameScore += attemptsLeft;
+                    if (gameScore > highScore)
+                    {
+                        highScore = gameScore;
+                    }
+                    Console.WriteLine(gameScore + " | " + highScore);
+                }
 
                 if (new string(guessedWord) == wordToGuess)
                 {
                     Console.WriteLine($"Congratulations! You guessed the word: {wordToGuess}");
+                    Console.WriteLine($"Score: {gameScore} | HighScore: {highScore}");
                     return;
                 }
             }
 
-            Console.WriteLine($"Game over! The word was: {wordToGuess}");
-        }
-        
 
-        static int Difficult() 
+            Console.WriteLine($"Game over! The word was: {wordToGuess}");
+            Console.WriteLine($"Score: {gameScore} | HighScore: {highScore}");
+
+        }
+
+        static int Difficult()
         {
             int userChoice = 0;
             while (userChoice == 0 && userChoice <= 3)
@@ -144,7 +176,8 @@ namespace Övning_Utveckla_Programmet
             }
 
             return userChoice;
-
         }
     }
 }
+
+
