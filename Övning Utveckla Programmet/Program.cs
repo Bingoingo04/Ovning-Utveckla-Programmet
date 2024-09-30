@@ -41,15 +41,24 @@
             }
 
             int attemptsLeft = 6;
-
+            Console.WriteLine("Type exit to quit game");
             while (attemptsLeft > 0)
             {
-                Console.WriteLine($"\nWord: {new string(guessedWord)}");
+                Console.WriteLine($"Word: {new string(guessedWord)}");
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
 
-                char guess = Console.ReadLine().ToLower()[0];
-                bool correctGuess = false;
+                string userInput = Console.ReadLine().ToLower();
+				//first char in userInput is the guess.
+				char guess = userInput[0];
+
+				bool correctGuess = false;
+
+                if(userInput == "exit")
+                {
+                //break the while loop and go back to home screen
+                    break;
+                }
 
                 for (int i = 0; i < wordToGuess.Length; i++)
                 {
