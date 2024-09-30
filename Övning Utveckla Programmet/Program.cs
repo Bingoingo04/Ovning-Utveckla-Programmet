@@ -1,8 +1,12 @@
-﻿namespace Övning_Utveckla_Programmet
+﻿using System.Diagnostics.Metrics;
+
+namespace Övning_Utveckla_Programmet
 {
     class WordGuessingGame
     {
-        static string[] words = { "apple", "banana", "cherry", "date", "elderberry" };
+        static string[] wordsEasy = { "ball", "car", "earn", "run", "toe" };
+        static string[] wordsMedium = { "plenty", "arrow", "office", "radio", "Window" };
+        static string[] wordsHard = { "apple", "banana", "cherry", "date", "elderberry" };
         static Random random = new Random();
 
         static void Main(string[] args)
@@ -18,7 +22,8 @@
 
                 if (choice == "1")
                 {
-                    PlayGame();
+                   int settings = Difficult();
+                   PlayGame(settings);
                 }
                 else if (choice == "2")
                 {
@@ -31,16 +36,35 @@
             }
         }
 
-        static void PlayGame()
+        static void PlayGame(int settings)
         {
-            string wordToGuess = words[random.Next(words.Length)];
+            string wordToGuess = wordsHard[random.Next(wordsHard.Length)];
             char[] guessedWord = new char[wordToGuess.Length];
+            int attemptsLeft = 0;
+
+            if (settings == 1)
+            {
+                wordToGuess = wordsEasy[random.Next(wordsEasy.Length)];
+                guessedWord = new char[wordToGuess.Length];
+                attemptsLeft = 6;
+            }
+            else if (settings == 2)
+            {
+                wordToGuess = wordsMedium[random.Next(wordsMedium.Length)];
+                guessedWord = new char[wordToGuess.Length];
+                attemptsLeft = 4;
+            }
+            else if (settings == 3)
+            {
+                wordToGuess = wordsHard[random.Next(wordsHard.Length)];
+                guessedWord = new char[wordToGuess.Length];
+                attemptsLeft = 3;
+            }
+            
             for (int i = 0; i < guessedWord.Length; i++)
             {
                 guessedWord[i] = '_';
             }
-
-            int attemptsLeft = 6;
 
             while (attemptsLeft > 0)
             {
@@ -74,6 +98,53 @@
             }
 
             Console.WriteLine($"Game over! The word was: {wordToGuess}");
+        }
+        
+
+        static int Difficult() 
+        {
+            int userChoice = 0;
+            while (userChoice == 0 && userChoice <= 3)
+            {
+
+                Console.WriteLine("              Välj svårighetsgrad");
+                Console.WriteLine();
+                Console.WriteLine("1.Lätt");
+                Console.WriteLine("2.Medium");
+                Console.WriteLine("3.Svårt");
+
+                try
+                {
+                    userChoice = Convert.ToInt32(Console.ReadLine());
+
+                }
+                catch (System.FormatException)
+                {
+
+                    Console.WriteLine("Fel inmatning, försök igen.");
+                }
+                Console.Clear();
+                Console.WriteLine();
+
+                switch (userChoice)
+                {
+                    case 1:
+                        Console.Write("1. Du valde: Lätt\n");
+                        break;
+                    case 2:
+                        Console.Write("2. Du valde: Medium\n");
+                        break;
+                    case 3:
+                        Console.Write("3. Du valde: Svårt\n");
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+            return userChoice;
+
         }
     }
 }
