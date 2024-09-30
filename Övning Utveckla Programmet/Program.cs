@@ -51,17 +51,17 @@
 				Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
 
-				string userInput = Console.ReadLine().ToLower();
+                string userInput = Console.ReadLine().ToLower();
 				//first char in userInput is the guess.
 				char guess = userInput[0];
 
 				bool correctGuess = false;
 
-				if (userInput == "exit")
-				{
-					//break the while loop and go back to home screen
-					break;
-				}
+                if(userInput == "exit")
+                {
+                //break the while loop and go back to home screen
+                    break;
+                }
 
 				for (int i = 0; i < wordToGuess.Length; i++)
 				{
