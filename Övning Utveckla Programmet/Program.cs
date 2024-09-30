@@ -14,19 +14,28 @@ namespace Övning_Utveckla_Programmet
         {
             while (true)
             {
+                bool userChoseWord = false;
+                int settings = 0;
+
                 Console.WriteLine("\nWord Guessing Game");
                 Console.WriteLine("1. Play Game");
-                Console.WriteLine("2. Exit");
+                Console.WriteLine("2. Chose Word To Guess");
+                Console.WriteLine("3. Exit");
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
                 
                 if (choice == "1")
-                {   
-                    int settings = Difficult();
-                    PlayGame(settings);
+                {
+                    settings = Difficult();
+                    PlayGame(settings, userChoseWord);
                 }
-                else if (choice == "2")
+                else if(choice == "2")
+                {
+                    userChoseWord = true;
+                    PlayGame(settings, userChoseWord);
+                }
+                else if (choice == "3")
                 {
                     break;
                 }
@@ -37,32 +46,67 @@ namespace Övning_Utveckla_Programmet
             }
         }
 
-        static void PlayGame(int settings)
+        static void PlayGame(int settings, bool userChoseWord)
         {
             // Sets up the difficulty based on the return from Difficuly()
             int gameScore = 0;
-            string wordToGuess = wordsHard[random.Next(wordsHard.Length)];
-            char[] guessedWord = new char[wordToGuess.Length];
+            string wordToGuess = "";
+            char[] guessedWord = [];
             int attemptsLeft = 0;
+            if (userChoseWord)
+            {
+                // Asks user to enter a word to guess and checks so it doesnt contain numbers or is blank
+                while (true)
+                {
+                    Console.Write("Enter a word to guess: ");
+                    wordToGuess = Console.ReadLine();
 
-            if (settings == 1)
-            {
-                wordToGuess = wordsEasy[random.Next(wordsEasy.Length)];
-                guessedWord = new char[wordToGuess.Length];
-                attemptsLeft = 6;
+                    bool containsNumbers = false;
+
+                    foreach (char c in wordToGuess)
+                    {
+                        if (char.IsDigit(c))
+                        {
+                            containsNumbers = true;
+                            break;
+                        }
+                    }
+
+
+                    if (!string.IsNullOrWhiteSpace(wordToGuess) && !double.TryParse(wordToGuess, out _) && !containsNumbers)
+                    {
+                        guessedWord = new char[wordToGuess.Length];
+                        attemptsLeft = 6;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input");
+                    }
+                }
             }
-            else if (settings == 2)
+            else
             {
-                wordToGuess = wordsMedium[random.Next(wordsMedium.Length)];
-                guessedWord = new char[wordToGuess.Length];
-                attemptsLeft = 4;
+                if (settings == 1)
+                {
+                    wordToGuess = wordsEasy[random.Next(wordsEasy.Length)];
+                    guessedWord = new char[wordToGuess.Length];
+                    attemptsLeft = 6;
+                }
+                else if (settings == 2)
+                {
+                    wordToGuess = wordsMedium[random.Next(wordsMedium.Length)];
+                    guessedWord = new char[wordToGuess.Length];
+                    attemptsLeft = 4;
+                }
+                else if (settings == 3)
+                {
+                    wordToGuess = wordsHard[random.Next(wordsHard.Length)];
+                    guessedWord = new char[wordToGuess.Length];
+                    attemptsLeft = 3;
+                }
             }
-            else if (settings == 3)
-            {
-                wordToGuess = wordsHard[random.Next(wordsHard.Length)];
-                guessedWord = new char[wordToGuess.Length];
-                attemptsLeft = 3;
-            }
+            
 
             for (int i = 0; i < guessedWord.Length; i++)
             {
