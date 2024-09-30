@@ -49,19 +49,27 @@
 			{
 				Console.WriteLine($"Word: {new string(guessedWord)}");
 				Console.WriteLine($"Attempts left: {attemptsLeft}");
-                Console.Write("Guess a letter: ");
+				Console.Write("Guess a letter: ");
 
-                string userInput = Console.ReadLine().ToLower();
+				string userInput = Console.ReadLine().ToLower();
 				//first char in userInput is the guess.
-				char guess = userInput[0];
-
+				char guess = ' ';
+				if (userInput.Length > 0)
+				{
+					guess = userInput[0];
+				}
+				else
+				{
+					//no input, go back to top of while loop
+					continue;
+				}
 				bool correctGuess = false;
 
-                if(userInput == "exit")
-                {
-                //break the while loop and go back to home screen
-                    break;
-                }
+				if (userInput == "exit")
+				{
+					//break the while loop and go back to home screen
+					break;
+				}
 
 				for (int i = 0; i < wordToGuess.Length; i++)
 				{
@@ -83,7 +91,7 @@
 					if (gameScore > highScore)
 					{
 						highScore = gameScore;
-                    }
+					}
 					Console.WriteLine(gameScore + " | " + highScore);
 				}
 
