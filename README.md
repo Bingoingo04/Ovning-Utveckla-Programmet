@@ -2,8 +2,8 @@
 - [ ] Lägg till lätt, medel och svår svårighetsnivå med olika ordlängder och/eller försöksgränser.
 - [ ] Dela ut poäng baserat på korrekta gissningar och återstående försök
 - [ ] Håll koll på högsta poängen.
-- [ ] Se till att spelaren bara matar in en bokstav i taget.
-- [ ] Hantera fall där spelaren matar in icke-alfabetiska tecken.
+- [ ] Se till att spelaren bara matar in en bokstav i taget. Viggo
+- [ ] Hantera fall där spelaren matar in icke-alfabetiska tecken. Viggo
 - [ ] Ge en ledtråd om ordet (t.ex. dess kategori) i början av spelet eller när spelaren håller på att få slut på försök
 - [ ] Låt spelaren ge upp och avslöja ordet mitt i spelet.
 - [ ] Låt en spelare mata in ett ord som den andra ska gissa.
