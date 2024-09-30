@@ -1,0 +1,10 @@
+- [ ] Utöka spelets ordförråd så att det finns fler möjliga ord att gissa på.
+- [ ] Lägg till lätt, medel och svår svårighetsnivå med olika ordlängder och/eller försöksgränser.
+- [ ] Dela ut poäng baserat på korrekta gissningar och återstående försök
+- [ ] Håll koll på högsta poängen.
+- [ ] Se till att spelaren bara matar in en bokstav i taget.
+- [ ] Hantera fall där spelaren matar in icke-alfabetiska tecken.
+- [ ] Ge en ledtråd om ordet (t.ex. dess kategori) i början av spelet eller när spelaren håller på att få slut på försök
+- [ ] Låt spelaren ge upp och avslöja ordet mitt i spelet.
+- [ ] Låt en spelare mata in ett ord som den andra ska gissa.
+- [ ] Använd ASCII-konst för att rita en enkel hänggubbe-figur när felaktiga gissningar ackumuleras.
