@@ -24,7 +24,7 @@ namespace Övning_Utveckla_Programmet
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
-
+                
                 if (choice == "1")
                 {
                     settings = Difficult();
@@ -48,6 +48,7 @@ namespace Övning_Utveckla_Programmet
 
         static void PlayGame(int settings, bool userChoseWord)
         {
+            // Sets up the difficulty based on the return from Difficuly()
             int gameScore = 0;
             string wordToGuess = "";
             char[] guessedWord = [];
@@ -115,6 +116,7 @@ namespace Övning_Utveckla_Programmet
             Console.WriteLine("Type exit to quit game");
             while (attemptsLeft > 0)
             {
+                Console.Clear();
                 Console.WriteLine($"Word: {new string(guessedWord)}");
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
                 Console.Write("Guess a letter: ");
@@ -176,7 +178,7 @@ namespace Övning_Utveckla_Programmet
             Console.WriteLine($"Score: {gameScore} | HighScore: {highScore}");
 
         }
-
+        
         static int Difficult()
         {
             int userChoice = 0;
