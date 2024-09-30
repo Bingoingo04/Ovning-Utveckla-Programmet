@@ -5,6 +5,6 @@
 - [ ] Se till att spelaren bara matar in en bokstav i taget. Viggo
 - [ ] Hantera fall där spelaren matar in icke-alfabetiska tecken. Viggo
 - [ ] Ge en ledtråd om ordet (t.ex. dess kategori) i början av spelet eller när spelaren håller på att få slut på försök
-- [ ] Låt spelaren ge upp och avslöja ordet mitt i spelet.
+- [ ] Låt spelaren ge upp och avslöja ordet mitt i spelet. - Hugo
 - [ ] Låt en spelare mata in ett ord som den andra ska gissa.
 - [ ] Använd ASCII-konst för att rita en enkel hänggubbe-figur när felaktiga gissningar ackumuleras.
