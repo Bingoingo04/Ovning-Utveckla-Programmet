@@ -41,24 +41,37 @@
             }
 
             int attemptsLeft = 6;
-            Console.WriteLine("Type exit to quit game");
             while (attemptsLeft > 0)
             {
                 Console.WriteLine($"Word: {new string(guessedWord)}");
                 Console.WriteLine($"Attempts left: {attemptsLeft}");
-                Console.Write("Guess a letter: ");
 
-                string userInput = Console.ReadLine().ToLower();
-				//first char in userInput is the guess.
-				char guess = userInput[0];
-
-				bool correctGuess = false;
-
-                if(userInput == "exit")
+                // Checks if user entered a guess corectly
+                string inputGuess;
+                while (true)
                 {
-                //break the while loop and go back to home screen
-                    break;
+                    Console.WriteLine("Type exit to quit game");
+                    Console.Write("Please enter a single letter: ");
+                    inputGuess = Console.ReadLine();
+
+                    // Check if the input is a single letter
+                    if (inputGuess == "exit")
+                    {
+                        Console.WriteLine($"The word was: {wordToGuess}");
+                        return;
+                    }
+                    else if (inputGuess.Length == 1 && char.IsLetter(inputGuess[0]))
+                    {
+                        break; // Input is valid; exit the loop
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
+                    }
                 }
+
+                char guess = inputGuess[0];
+                bool correctGuess = false;
 
                 for (int i = 0; i < wordToGuess.Length; i++)
                 {
